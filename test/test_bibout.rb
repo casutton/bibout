@@ -72,4 +72,35 @@ END
     end
   end
 
+  $FUNNY_BIB = <<END
+@book{garey:johnson,
+	Address = {New York, NY, USA},
+	Author = {Garey, Michael R. and Johnson, David S.},
+	Publisher = {W. H. Freeman \& Co.},
+	Title = {Computers and Intractability: A Guide to the Theory of NP-Completeness},
+        Tags = {Classic},
+        InternalCruft = xyzzy,
+	Year = {1979}}
+END
+
+$CLEAN_BIB = <<END
+@book{garey:johnson,
+  address = {New York, NY, USA},
+  author = {Garey, Michael R. and Johnson, David S.},
+  publisher = {W. H. Freeman & Co.},
+  title = {Computers and Intractability: A Guide to the Theory of NP-Completeness},
+  year = {1979}
+}
+END
+
+  def test_minimize
+    bib = BibTeX.parse($FUNNY_BIB)
+    entry = bib[0]
+
+    bo = BibOut.new('')    
+    entry2 = bo.minimize(entry)
+    
+    assert_equal $CLEAN_BIB, entry2.to_s
+  end
+
 end

@@ -24,4 +24,17 @@ module BibTeX
 
   end
 
+  class Names
+
+    # Returns a string containing the list of names in first-last order,
+    # correctly delimited by commas and and
+    def pretty(options={})
+      names = map { |n| n.display_order(options) }
+      return names.to_s if names.nil? or names.length <= 1
+      names[0..-2].join(", ") + " and " + names[-1]
+    end
+
+  end
+
+
 end

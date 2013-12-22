@@ -6,6 +6,30 @@ require 'erb'
 require 'ostruct'
 require 'bibout/bibtex'
 
+$STANDARD_FIELDS = [
+:address,
+:annote,
+:author,
+:booktitle,
+:chapter,
+:crossref,
+:edition,
+:editor,
+:howpublished,
+:institution,
+:journal,
+:month,
+:number,
+:organization,
+:pages,
+:publisher,
+:school,
+:series,
+:title,
+:type,
+:volume,
+:year
+].freeze
 
 class BibOut
   def initialize(template_string)
@@ -26,6 +50,17 @@ class BibOut
       bind = ErbBinding.new(hsh).get_binding()
       ERB.new(tmpl).result(bind)
     end
+  end
+
+  def minimize(entry)
+    fields = entry.fields
+    result = entry.clone
+    fields.each do |k,v|
+      if not $STANDARD_FIELDS.include? k
+        result.delete k
+      end
+    end
+    result
   end
 
   def result(bib)
