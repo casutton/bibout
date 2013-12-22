@@ -1,0 +1,22 @@
+require "bibout/version"
+
+Gem::Specification.new do |s|
+  s.name               = BibOut::NAME
+  s.version            = BibOut::VERSION
+  s.default_executable = BibOut::NAME
+
+  s.license = "MIT"
+  
+  s.authors = ["Charles Sutton"]
+  s.date = %q{2014-01-01}
+  s.description = %q{Converts BibTeX files into pretty output using arbitrary user-specified templates, which can contain arbitrary Ruby code using ERB.}
+  s.email = %q{csutton@inf.ed.ac.uk}
+  s.files = ["Rakefile", "lib/bibout.rb"]
+  s.test_files = ["test/test_bibout.rb"]
+  s.homepage = %q{http://rubygems.org/gems/bibout}
+  s.require_paths = ["lib"]
+  s.rubygems_version = %q{1.6.2}
+  s.summary = %q{BibTeX formatter}
+
+end
+

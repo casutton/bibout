@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+#
+#  Author: Charles Sutton <csutton@inf.ed.ac.uk>
+#  Created: 2008-03-03.
+#  Copyright (c) 2008. All rights reserved.
+
+$CURRENT_DIR = "FOOBAR"
+
+require 'bibout'
+require 'optparse'
+
+options = { :template => nil, :output_file => nil }
+
+opts = OptionParser.new
+
+opts.banner = "Usage: bibout [options] <bibfile>"
+opts.on("-tMANDATORY", "--template MANDATORY", "Name of template file") do |tmpl|
+  options[:template] = tmpl
+end
+opts.on("-oFILENAME", "--output FILE_NAME", "Name of output file (if unspecified, uses stdout)") do |ofile|
+  options[:output_file] = ofile
+end
+opts.on("-dDIRECTORY", "--directory DIR", "Base directory for embed() calls in template (default: directory of template)") do |dir|
+  options[:dir] = dir
+end
+opts.on_tail("-h", "--help", "Show this message") do
+  puts opts
+  exit
+end
+opts.parse!
+
+bibfile = ARGV[0]
+
+if options[:template].nil? 
+  puts "Error: Missing template file"
+  puts opts
+  abort
+end
+if bibfile.nil? 
+  puts "Error: Missing BibTeX file"
+  puts opts
+  abort
+end
+if options[:dir].nil?
+  options[:dir] = File.dirname(options[:template])
+end
+
+bib = BibTeX::Bibliography.import(bibfile)
+bib.each { |entry| entry.each { |k| entry[k] = cleanup(entry[k]) }}
+
+File.open(options[:template]) do |f|
+  template_string = f.read()
+  bibout = BibOut.new(template_string)
+  bibout.set_root_dir(options[:dir])
+  result = bibout.result(bib)
+
+  if options[:output_file].nil?
+    print (result)
+  else
+    File.open (options[:output_file]) do |outf|
+       outf << result
+    end
+  end
+
+end
+
