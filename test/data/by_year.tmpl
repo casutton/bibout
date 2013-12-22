@@ -1,0 +1,7 @@
+<% years = bib.all_values(:year).sort %>
+<% years.each do |y| %>
+<%= y %>
+<% bib.select {|e| e[:year] == y}.each do |entry| %>
+<%= embed "inner2.tmpl", :x => entry %>
+<%end%>
+<%end%>

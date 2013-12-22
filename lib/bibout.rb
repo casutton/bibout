@@ -57,9 +57,6 @@ def is_thesis entry
   entry.kind == "PhDThesis"
 end
 
-def cleanup(bibtex)
-  return bibtex.delete("{}\\").strip().gsub(/\s+/, ' ')
-end
 
 # main
 

@@ -7,6 +7,8 @@ Gem::Specification.new do |s|
 
   s.license = "MIT"
   
+  s.add_runtime_dependency "bibtex-ruby", '>=3.0.0'
+
   s.authors = ["Charles Sutton"]
   s.date = %q{2014-01-01}
   s.description = %q{Converts BibTeX files into pretty output using arbitrary user-specified templates, which can contain arbitrary Ruby code using ERB.}

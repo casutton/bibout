@@ -45,8 +45,7 @@ if options[:dir].nil?
   options[:dir] = File.dirname(options[:template])
 end
 
-bib = BibTeX::Bibliography.import(bibfile)
-bib.each { |entry| entry.each { |k| entry[k] = cleanup(entry[k]) }}
+bib = BibTeX.open(bibfile)
 
 File.open(options[:template]) do |f|
   template_string = f.read()
