@@ -23,6 +23,9 @@ end
 opts.on("-dDIRECTORY", "--directory DIR", "Base directory for embed() calls in template (default: directory of template)") do |dir|
   options[:dir] = dir
 end
+opts.on("-r", "--require module1,...,moduleN", Array, "Ruby modules to require before running templates") do |r|
+  options[:require_list] = r
+end
 opts.on_tail("-h", "--help", "Show this message") do
   puts opts
   exit
@@ -43,6 +46,9 @@ if bibfile.nil?
 end
 if options[:dir].nil?
   options[:dir] = File.dirname(options[:template])
+end
+if not options[:require_list].nil?
+  options[:require_list].each { |x| require x }
 end
 
 bib = BibTeX.open(bibfile)
