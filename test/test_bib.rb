@@ -7,6 +7,7 @@ class BibliographyTest < Test::Unit::TestCase
     current_dir = File.expand_path File.dirname(__FILE__) 
     @data_dir = File.join(current_dir, "data")
     @bib = BibTeX.open(File.join(@data_dir, "test.bib"))
+    @bib_sutton = BibTeX.open(File.join(@data_dir, "sutton.bib"))
   end
 
   def test_years
@@ -27,6 +28,11 @@ class BibliographyTest < Test::Unit::TestCase
     e = @bib["metropolis"]
     name_str = e.author.pretty
     assert_equal "N. Metropolis, A. Rosenbluth, M. Rosenbluth, A. Teller and E. Teller", name_str
+  end
+
+  def test_names_single_pretty
+    e = @bib_sutton["sutton:thesis"]
+    assert_equal "Charles Sutton", e.author.pretty
   end
 
   $FUNNY_BIB = <<END

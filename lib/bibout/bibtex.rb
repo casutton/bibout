@@ -72,7 +72,8 @@ module BibTeX
     # correctly delimited by commas and and
     def pretty(options={})
       names = map { |n| n.display_order(options) }
-      return names.to_s if names.nil? or names.length <= 1
+      return to_s if names.nil? or names.length < 1
+      return names[0].to_s if names.length == 1
       names[0..-2].join(", ") + " and " + names[-1]
     end
 
