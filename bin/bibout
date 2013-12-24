@@ -50,7 +50,7 @@ end
 
 #########################################################################
 
-bib = BibTeX.open(bibfile)
+bib = BibTeX.open(bibfile, :filter => :latex)
 result = BibOut.new(options[:dir]).process_file(bib, options[:template])
 
 if options[:output_file].nil?

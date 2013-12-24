@@ -7,7 +7,7 @@ class BibliographyTest < Test::Unit::TestCase
     current_dir = File.expand_path File.dirname(__FILE__) 
     @data_dir = File.join(current_dir, "data")
     @bib = BibTeX.open(File.join(@data_dir, "test.bib"))
-    @bib_sutton = BibTeX.open(File.join(@data_dir, "sutton.bib"))
+    @bib_sutton = BibTeX.open(File.join(@data_dir, "sutton.bib"), :format => :latex)
   end
 
   def test_years
