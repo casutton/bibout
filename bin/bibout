@@ -44,28 +44,18 @@ if bibfile.nil?
   puts opts
   abort
 end
-if options[:dir].nil?
-  options[:dir] = File.dirname(options[:template])
-end
 if not options[:require_list].nil?
   options[:require_list].each { |x| require x }
 end
 
+#########################################################################
+
 bib = BibTeX.open(bibfile)
+result = BibOut.new(options[:dir]).process_file(bib, options[:template])
 
-File.open(options[:template]) do |f|
-  template_string = f.read()
-  bibout = BibOut.new(template_string)
-  bibout.set_root_dir(options[:dir])
-  result = bibout.result(bib)
-
-  if options[:output_file].nil?
-    print (result)
-  else
-    File.open (options[:output_file]) do |outf|
-       outf << result
-    end
-  end
-
+if options[:output_file].nil?
+  print (result)
+else
+  File.open(options[:output_file], "w") { |outf| outf << result }
 end
 

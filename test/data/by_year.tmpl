@@ -1,4 +1,4 @@
-<% years = bib.all_values(:year).sort %>
+<% years = bib.all_values(:year) %>
 <% years.each do |y| %>
 <%= y %>
 <% bib.select {|e| e[:year] == y}.each do |entry| %>

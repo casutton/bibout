@@ -1,0 +1,8 @@
+<% if entries and not entries.empty? then %>
+<h2><%= title %></h2>
+<ol>
+<% entries.each do |entry| %>
+   <li><%= embed("embed2_inner1.tmpl", :entry => entry) %></li>
+<% end %>
+</ol>
+<% end %>

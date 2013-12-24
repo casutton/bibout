@@ -29,4 +29,31 @@ class BibliographyTest < Test::Unit::TestCase
     assert_equal "N. Metropolis, A. Rosenbluth, M. Rosenbluth, A. Teller and E. Teller", name_str
   end
 
+  $FUNNY_BIB = <<END
+@book{garey:johnson,
+	Address = {New York, NY, USA},
+	Author = {Garey, Michael R. and Johnson, David S.},
+	Publisher = {W. H. Freeman \& Co.},
+	Title = {Computers and Intractability: A Guide to the Theory of NP-Completeness},
+        Tags = {Classic},
+        InternalCruft = xyzzy,
+	Year = {1979}}
+END
+
+$CLEAN_BIB = <<END
+@book{garey:johnson,
+  address = {New York, NY, USA},
+  author = {Garey, Michael R. and Johnson, David S.},
+  publisher = {W. H. Freeman & Co.},
+  title = {Computers and Intractability: A Guide to the Theory of NP-Completeness},
+  year = {1979}
+}
+END
+
+  def test_minimize
+    entry = BibTeX.parse($FUNNY_BIB)[0]
+    entry2 = entry.minimize
+    assert_equal $CLEAN_BIB, entry2.to_s
+  end
+
 end

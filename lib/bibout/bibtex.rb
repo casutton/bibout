@@ -1,14 +1,40 @@
 # -*- coding: iso-8859-1 -*-
 # -*- ruby-mode -*-
-# Thin wrapper over 'bibtex-ruby' library that adds some convenience methods.
+# Extensions to 'bibtex-ruby' library that adds some convenience methods.
 
 # Author:: Charles Sutton (mailto:csutton@inf.ed.ac.uk)
 # Copyright:: Copyright (c) 2013 Charles Sutton
 # License:: MIT
 
+
 require 'bibtex'
 
 module BibTeX
+
+  $STANDARD_FIELDS = [
+    :address,
+    :annote,
+    :author,
+    :booktitle,
+    :chapter,
+    :crossref,
+    :edition,
+    :editor,
+    :howpublished,
+    :institution,
+    :journal,
+    :month,
+    :number,
+    :organization,
+    :pages,
+    :publisher,
+    :school,
+    :series,
+    :title,
+    :type,
+    :volume,
+    :year
+  ].freeze
 
   class Bibliography
 
@@ -19,10 +45,26 @@ module BibTeX
     #  Ex: all_values(:year)
     #   --> list of all years that appear in the bibliography
     def all_values(field)
-      map { |e| e[field] }.flatten.compact
+      return map { |e| e[field] }.flatten.compact.map { |v| v.to_s }.sort.uniq
     end
 
   end
+
+  class Entry
+
+    # Returns a copy of this entry that has all non-standard BibTeX fields removed.
+    def minimize
+      result = clone
+      fields.each do |k,v|
+              if not $STANDARD_FIELDS.include? k
+                result.delete k
+              end
+            end
+      result
+    end
+
+  end
+
 
   class Names
 

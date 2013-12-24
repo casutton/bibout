@@ -1,0 +1,8 @@
+<html>
+   <body>
+     <div id="text">
+<%      theses = bib.find_all { |e| e.type == :book } %>
+<%=     embed("embed2_inner2.tmpl", :title => 'Dissertation', :entries => theses) %>
+      </div>
+   </body>
+</html>
