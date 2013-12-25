@@ -51,6 +51,8 @@ end
 #########################################################################
 
 bib = BibTeX.open(bibfile, :filter => :latex)
+bib.replace # substitute all @string mentions
+
 result = BibOut.new(options[:dir]).process_file(bib, options[:template])
 
 if options[:output_file].nil?
