@@ -11,6 +11,7 @@ require 'bibtex'
 
 module BibTeX
 
+  # A list of Symbols naming fields that are commonly used in BibTeX entries.
   $STANDARD_FIELDS = [
     :address,
     :annote,
@@ -36,9 +37,14 @@ module BibTeX
     :year
   ].freeze
 
+  
+  # This class represents a bibliography, usually a single BibTeX file.
+  #
+  # This is the same class as {BibTeX::Bibliography}[http://rubydoc.info/gems/bibtex-ruby/BibTeX/Bibliography] from bibtex-ruby.
+  # See those class docs for more information.
   class Bibliography
 
-    #  Returns a list of all values of the specified field trype, across all entries in the bibliography
+    #  Returns a list of all values of the specified field type, across all entries in the bibliography
     #
     #  This generalizes the names method to arbitrary field types
     #
@@ -64,6 +70,9 @@ module BibTeX
 
   end
 
+  # This class represents a single entry in a bibliography.
+  # This is the same class as {BibTeX::Entry}[http://rubydoc.info/gems/bibtex-ruby/BibTeX/Entry] from bibtex-ruby.
+  # See those class docs for more information.
   class Entry
 
     # Returns a copy of this entry that has all non-standard BibTeX fields removed.
@@ -80,6 +89,9 @@ module BibTeX
   end
 
 
+  # This class represents a list of names.
+  # This is the same class as {BibTeX::Names}[http://rubydoc.info/gems/bibtex-ruby/BibTeX/Names] from bibtex-ruby.
+  # See those class docs for more information.
   class Names
 
     # Returns a string containing the list of names in first-last order,
