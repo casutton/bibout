@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Bibout : Formats BibTeX files into pretty files (e.g., HTML) using arbitrary templates." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Bibout</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/casutton/bibout">View on GitHub</a>
+
+          <h1 id="project_title">Bibout</h1>
+          <h2 id="project_tagline">Formats BibTeX files into pretty files (e.g., HTML) using arbitrary templates.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/casutton/bibout/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/casutton/bibout/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="bibout" class="anchor" href="#bibout"><span class="octicon octicon-link"></span></a>BibOut</h1>
+
+<p>This package contains BibOut, a simple tool to convert BibTeX
+files into HTML or other types of formatted text files.</p>
+
+<p>The main feautre of BibOut is that it allows the user to specify
+a template for the output. The templating system is based on
+<a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/erb/rdoc/ERB.html">ERB</a>,
+so it is very flexible.</p>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<h2>
+<a name="gem-installation" class="anchor" href="#gem-installation"><span class="octicon octicon-link"></span></a>Gem Installation</h2>
+
+<p>Download and install BibOut with the following.</p>
+
+<p>gem install bibout</p>
+
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<h2>
+<a name="simple-example" class="anchor" href="#simple-example"><span class="octicon octicon-link"></span></a>Simple Example</h2>
+
+<p>You will need a BibTeX file. Suppose that your file is called +mine.bib+
+and contains the entries</p>
+
+<pre><code>    @article{robbins-monro,
+Author = {Robbins, H. and Monro, S.},
+Journal = {Annals of Mathematical Statistics},
+Pages = {400--407},
+Title = {A stochastic approximation method},
+Volume = {22},
+Year = {1951}}
+
+    @article{metropolis,
+Author = {Metropolis, N. and Rosenbluth, A. and Rosenbluth, M. and Teller, A. and Teller, E.},
+Journal = {J. Chem. Phys.},
+Pages = {1087--1092},
+Title = {Equations of state calculations by fast computing machines},
+Volume = {21},
+Year = {1953}}
+</code></pre>
+
+<p>Then you will need to create a template file that tells BibOut how to format your entries.
+Call this file +template.tmpl+</p>
+
+<pre><code>    &lt;html&gt;
+      &lt;body&gt;
+        &lt;ol&gt;
+          &lt;% bib.each do |entry| %&gt;
+          &lt;li&gt;&lt;%= entry.year %&gt;. &lt;%= entry.author.pretty %&gt;&lt;/li&gt;
+          &lt;% end %&gt;
+        &lt;/ol&gt;
+       &lt;/body&gt;
+     &lt;/html&gt;
+</code></pre>
+
+<p>Finally, you can run bibout using</p>
+
+<p>% ls
+   template.tmpl  mine.bib
+   % bibout -t template.tmpl -o my-bib.html mine.bib</p>
+
+<p>After running this command, the file +my-bib.html+ will be created and will contain:</p>
+
+<p>
+    </p>
+      <ol>
+<pre><code>    &lt;li&gt;1951. H. Robbins and S. Monro&lt;/li&gt;
+
+    &lt;li&gt;1953. N. Metropolis, A. Rosenbluth, M. Rosenbluth, A. Teller and E. Teller&lt;/li&gt;
+
+  &lt;/ol&gt;
+ &lt;/body&gt;
+</code></pre>
+
+<p></p>
+
+<p>Type <code>bibout --help</code> for more information about the command-line invocation.</p>
+
+<h1>
+<a name="create-template-files" class="anchor" href="#create-template-files"><span class="octicon octicon-link"></span></a>Create Template Files</h1>
+
+<p>To use BibOut, the biggest thing that you need to do is to create the template file.
+The template file can contain arbitrary text and Ruby code.
+For more documentation about templates, including examples,
+see this {page about templates}[templates.html]</p>
+
+<h1>
+<a name="issues-and-bug-reports" class="anchor" href="#issues-and-bug-reports"><span class="octicon octicon-link"></span></a>Issues and Bug Reports</h1>
+
+<p>Feature requests and bug reports can be made here</p>
+
+</ol><ul>
+<li><a href="https://github.com/casutton/bibout/issues">https://github.com/casutton/bibout/issues</a></li>
+</ul><h1>
+<a name="other-bibtex-to-html-programs" class="anchor" href="#other-bibtex-to-html-programs"><span class="octicon octicon-link"></span></a>Other BibTeX to HTML programs</h1>
+
+<p>There are many other BibTeX to HTML programs</p>
+
+<ul>
+<li>
+<a href="https://www.lri.fr/%7Efilliatr/bibtex2html/">https://www.lri.fr/~filliatr/bibtex2html/</a> -- bibtex2html, a nice and well-documented tool</li>
+<li>
+<a href="http://tug.ctan.org/tex-archive/biblio/bibtex/utils/bib2ml/">http://tug.ctan.org/tex-archive/biblio/bibtex/utils/bib2ml/</a> -- bib2ml (CTAN)</li>
+<li>
+<a href="http://www.spinellis.gr/sw/textproc/bib2xhtml/">http://www.spinellis.gr/sw/textproc/bib2xhtml/</a> -- bib2xml</li>
+<li>
+<a href="http://sourceforge.net/p/bibutils/home/Bibutils/">http://sourceforge.net/p/bibutils/home/Bibutils/</a> -- bib2xml component of bibutils</li>
+</ul><p>If you know of others, please let me know and I shall be happy to add them to this list.</p>
+
+<h1>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h1>
+
+<p>This project is basically a thin wrapper that combines <a href="https://github.com/inukshuk/bibtex-ruby/">bibtex-ruby</a> by Sylvester Keil
+with <a href="http://ruby-doc.org/stdlib-2.0.0/libdoc/erb/rdoc/ERB.html">ERB</a> by Masatoshi SEKI.</p>
+
+<p>Thanks also to <a href="http://ngs.io">Atsushi Nagase</a> for the <a href="http://ngs.github.io/hanna-bootstrap/">hanna-bootstrap</a> RDoc template.</p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>BibOut is available under an MIT-style license.
+See LICENSE.md in the source repository</p>
+
+<h1>
+<a name="other-stuff" class="anchor" href="#other-stuff"><span class="octicon octicon-link"></span></a>Other stuff</h1>
+
+<p>BibOut is authored by <a href="http://homepages.inf.ed.ac.uk/csutton/">Charles Sutton</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Bibout maintained by <a href="https://github.com/casutton">casutton</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
