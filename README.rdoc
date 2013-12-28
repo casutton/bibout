@@ -1,0 +1,120 @@
+= BibOut -- 
+
+This package contains BibOut, a simple tool to convert BibTeX
+files into HTML or other types of formatted text files.
+
+The main feautre of BibOut is that it allows the user to specify
+a template for the output. The templating system is based on
+ERB[http://ruby-doc.org/stdlib-2.1.0/libdoc/erb/rdoc/ERB.html],
+so it is very flexible.
+
+== Installation
+
+=== Gem Installation
+
+Download and install BibOut with the following.
+
+   gem install bibout
+
+== Usage
+
+=== Simple Example
+
+You will need a BibTeX file. Suppose that your file is called +mine.bib+
+and contains the entries
+
+        @article{robbins-monro,
+	Author = {Robbins, H. and Monro, S.},
+	Journal = {Annals of Mathematical Statistics},
+	Pages = {400--407},
+	Title = {A stochastic approximation method},
+	Volume = {22},
+	Year = {1951}}
+
+        @article{metropolis,
+	Author = {Metropolis, N. and Rosenbluth, A. and Rosenbluth, M. and Teller, A. and Teller, E.},
+	Journal = {J. Chem. Phys.},
+	Pages = {1087--1092},
+	Title = {Equations of state calculations by fast computing machines},
+	Volume = {21},
+	Year = {1953}}
+
+
+Then you will need to create a template file that tells BibOut how to format your entries.
+Call this file +template.tmpl+
+
+        <html>
+          <body>
+            <ol>
+              <%- bib.each do |entry| -%>
+              <li><%= entry.year %><% entry.author.pretty %></li>
+            </ol>
+           </body>
+         </html>
+
+Finally, you can run bibout using
+
+   % ls
+   template.tmpl  mine.bib
+   % bibout -t mine.bib -o my-bib.html template.tmpl
+
+After running this command, the file my-byb.html will be created and will contain:
+
+
+Type +bibout --help+ for more information about the command-line invocation
+
+== Development
+
+=== Source Repository
+
+BibOut is currently hosted at github. The github web page is
+http://github.com/casutton/bibout . The public git clone URL is
+
+* git://github.com/casutton/bibout.git
+
+=== Issues and Bug Reports
+
+Feature requests and bug reports can be made here
+
+* https://github.com/casutton/bibout/issues
+
+== Other BibTeX to HTML programs
+
+There are many other BibTeX to HTML programs
+
+* https://www.lri.fr/~filliatr/bibtex2html/ -- bibtex2html, a nice and well-documented tool
+* http://tug.ctan.org/tex-archive/biblio/bibtex/utils/bib2ml/ -- bib2ml (CTAN)
+* http://www.spinellis.gr/sw/textproc/bib2xhtml/ -- bib2xml
+* http://sourceforge.net/p/bibutils/home/Bibutils/ -- bib2xml component of bibutils
+
+If you know of others, please let me know and I shall be happy to add them to this list.
+
+== Credits
+
+This project is basically a thin wrapper that combines bibtex-ruby[https://github.com/inukshuk/bibtex-ruby/] by Sylvester Keil
+with ERB[http://ruby-doc.org/stdlib-2.0.0/libdoc/erb/rdoc/ERB.html] by Masatoshi SEKI.
+
+Thanks also to {Atsushi Nagase}[http://ngs.io] for the hanna-bootstrap[http://ngs.github.io/hanna-bootstrap/] RDoc template.
+
+== License
+
+BibOut is available under an MIT-style license.
+
+:include: LICENSE.md
+
+---
+
+= Other stuff
+
+Author::   Charles Sutton <csutton@inf.ed.ac.uk>
+Requires:: Ruby 1.8.7 or later
+License::  Copyright 2013-2014 by Charles Sutton
+           Released under an MIT-style license.  See the LICENSE
+           file included in the distribution.
+
+== Warranty
+
+This software is provided "as is" and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantibility and fitness for a particular
+purpose.
