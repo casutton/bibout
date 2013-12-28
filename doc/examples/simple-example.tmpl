@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>A Simple Publications Page</title>
+  </head>
+  <body>
+   <h1>References</h1>
+    <ol>
+      <% bib.sort_by { |e| e[:year] }.reverse.each do |entry| %>
+        <li><%= entry.year %>. <%= entry.author.pretty %>. <%= entry.title %>
+        <% if not entry[:url].nil? %><a href="<%=entry[:url] %>">pdf</a><% end %></li>
+      <% end %>
+    </ol>
+   </body>
+</html>
