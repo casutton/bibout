@@ -25,17 +25,3 @@ class BibOut
 end
 
 
-# other method
-
-def is_workshop entry
-  entry['tags'] =~ /workshop/ 
-end
-
-def is_tr entry
-  entry.kind == "TechReport"
-end
-
-def is_thesis entry
-  entry.kind == "PhDThesis"
-end
-
