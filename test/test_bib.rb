@@ -1,6 +1,8 @@
 require 'test/unit'
 require 'bibout'
 
+# Tests the extensions that this project makes to
+# BibTeX::Bibliography and friends.
 class BibliographyTest < Test::Unit::TestCase
 
   def setup
@@ -60,6 +62,16 @@ END
     entry = BibTeX.parse($FUNNY_BIB)[0]
     entry2 = entry.minimize
     assert_equal $CLEAN_BIB, entry2.to_s
+  end
+
+  def test_bib_sort_by
+    entries = @bib.sort_by { |e| e.year }
+    assert_equal ["robbins-monro", "metropolis", "garey:johnson"], entries.map { |e| e.key }
+  end
+
+  def test_bib_sort
+    entries = @bib.sort { |e1,e2| e1.year <=> e2.year }
+    assert_equal ["robbins-monro", "metropolis", "garey:johnson"], entries.map { |e| e.key }
   end
 
 end

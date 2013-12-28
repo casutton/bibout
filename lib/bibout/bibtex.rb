@@ -48,6 +48,20 @@ module BibTeX
       return map { |e| e[field] }.flatten.compact.map { |v| v.to_s }.sort.uniq
     end
 
+    #  Returns a list of all of the Entries in this bibliography,
+    #  sorted by calling the given block. Fixes a problem with the 
+    #  sort_by method in the bibtex-ruby version
+    #  of this class.
+    def sort_by(*arguments, &block)
+      data.sort_by(*arguments, &block)
+    end
+
+    #  Returns a list of all of the Entries in this bibliography,
+    #  sorted by in the specified order. Fixes a problem with bibtex-ruby.
+    def sort(*arguments, &block)
+      data.sort(*arguments, &block)
+    end
+
   end
 
   class Entry
