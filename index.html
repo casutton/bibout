@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Bibout : Formats BibTeX files into pretty files (e.g., HTML) using arbitrary templates." />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/stylesheet.css">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' type='text/css' rel='stylesheet' media='all'>
     <title>Bibout</title>
   </head>
 
@@ -58,7 +59,7 @@ so it is very flexible.</p>
 <h2>
 <a name="simple-example" class="anchor" href="#simple-example"><span class="octicon octicon-link"></span></a>Simple Example</h2>
 
-<p>You will need a BibTeX file. Suppose that your file is called +mine.bib+
+<p>You will need a BibTeX file. Suppose that your file is called <tt>mine.bib</tt>
 and contains the entries</p>
 
 <pre><code>    @article{robbins-monro,
@@ -79,7 +80,7 @@ Year = {1953}}
 </code></pre>
 
 <p>Then you will need to create a template file that tells BibOut how to format your entries.
-Call this file +template.tmpl+</p>
+Call this file <tt>template.tmpl</tt></p>
 
 <pre><code>    &lt;html&gt;
       &lt;body&gt;
@@ -94,11 +95,12 @@ Call this file +template.tmpl+</p>
 
 <p>Finally, you can run bibout using</p>
 
-<p>% ls
+<pre><code>  % ls
    template.tmpl  mine.bib
-   % bibout -t template.tmpl -o my-bib.html mine.bib</p>
+   % bibout -t template.tmpl -o my-bib.html mine.bib
+</code></pre>
 
-<p>After running this command, the file +my-bib.html+ will be created and will contain:</p>
+<p>After running this command, the file <tt>my-bib.html</tt> will be created and will contain:</p>
 
 <p>
     </p>
@@ -121,7 +123,7 @@ Call this file +template.tmpl+</p>
 <p>To use BibOut, the biggest thing that you need to do is to create the template file.
 The template file can contain arbitrary text and Ruby code.
 For more documentation about templates, including examples,
-see this {page about templates}[templates.html]</p>
+see the <a href="templates.html">templates documentation</a></p>
 
 <h1>
 <a name="issues-and-bug-reports" class="anchor" href="#issues-and-bug-reports"><span class="octicon octicon-link"></span></a>Issues and Bug Reports</h1>
@@ -170,7 +172,7 @@ See LICENSE.md in the source repository</p>
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Bibout maintained by <a href="https://github.com/casutton">casutton</a></p>
+        <p class="copyright">Bibout authored by <a href="https://github.com/casutton">Charles Sutton</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
