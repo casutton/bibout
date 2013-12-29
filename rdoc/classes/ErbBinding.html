@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>ErbBinding - RDoc Documentation</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
+    <link href='../css/bootstrap.min.css' media='screen' rel='stylesheet' type='text/css'>
+    <link href='../css/application.css' media='screen' rel='stylesheet' type='text/css'>
+    <link href='../css/coderay.css' media='screen' rel='stylesheet' type='text/css'>
+    <script src='../js/jquery.js' type='text/javascript'></script>
+    <script src='../js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='../js/index.js' type='text/javascript'></script>
+    <script src='../js/application.js' type='text/javascript'></script>
+  </head>
+  <body class='class'>
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </a>
+          <a href=".." class="brand">RDoc Documentation</a>
+          <div class='nav-collapse'>
+            <ul class='nav'>
+              <li class='dropdown'>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                  Classes
+                  <b class='caret'></b>
+                </a>
+                <ul class='dropdown-menu' role='menu'>
+                  <li><a href="BibOut.html">BibOut</a></li><li><a href="BibTeX.html">BibTeX</a></li><li><a href="BibTeX/Bibliography.html"><span class="parent">BibTeX::</span>Bibliography</a></li><li><a href="BibTeX/Entry.html"><span class="parent">BibTeX::</span>Entry</a></li><li><a href="BibTeX/Names.html"><span class="parent">BibTeX::</span>Names</a></li><li><a href="ErbBinding.html">ErbBinding</a></li>
+                </ul>
+              </li>
+              <li class='dropdown'>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                  Files
+                  <b class='caret'></b>
+                </a>
+                <ul class='dropdown-menu' role='menu'>
+                  <li><a href="../files/README_rdoc.html">README.rdoc</a></li>
+                  <li><a href="../files/lib/bibout_rb.html">bibout.rb</a></li>
+                  <li><a href="../files/lib/bibout/bibtex_rb.html">bibtex.rb</a></li>
+                  <li><a href="../files/lib/bibout/erb_binding_rb.html">erb_binding.rb</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class='navbar-search pull-right'>
+              <input class='search-query span2' id='search-query' placeholder='Search methods' type='text'>
+              <ul aria-labelledby='search-query' class='dropdown-menu' id='search-results' role='menu'></ul>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='main'>
+      <div class='container' id='documentation'>
+        <div class='row'>
+          <div class='span9'>
+            <div class='page-header'>
+              <h1 class='name'>
+                <span class='type'>class</span>
+                ErbBinding
+              </h1>
+            </div>
+            <section id='content'>
+              <div id='text'>
+                <div id='description'>
+                  
+                  <p>Contains variables and methods that are useful for bibout templates.</p>
+                  
+                  <p>When a template is formatted using #BibOut.result or <a
+                  href="ErbBinding.html#method-i-embed">#embed</a>, it is evaluated within
+                  the context of an <a href="ErbBinding.html">ErbBinding</a> object,  so all
+                  instance varaibles and methods are available within code blocks of the
+                  template.</p>
+                </div>
+                <div id='context'>
+                </div>
+                <div id='section'>
+                  <div id='attribute-list'>
+                    <h2 class='section-bar'>Attributes</h2>
+                    <div class='name-list'>
+                      <table>
+                        <tr class='top-aligned-row context-row'>
+                          <td class='context-item-name'>
+                            <a name='attribute-i-bib'>bib</a>
+                          </td>
+                          <td class='context-item-value'>[RW]</td>
+                          <td class='context-item-desc'>
+                            
+                            <p>The current bibliography being processed. Of type #BibTeX::Bibliography</p>
+                          </td>
+                        </tr>
+                        <tr class='top-aligned-row context-row'>
+                          <td class='context-item-name'>
+                            <a name='attribute-i-root_dir'>root_dir</a>
+                          </td>
+                          <td class='context-item-value'>[RW]</td>
+                          <td class='context-item-desc'>
+                            
+                            <p>Name of the base directory for finding any sub-templates using <a
+                            href="ErbBinding.html#method-i-embed">embed</a></p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div id='methods'>
+                    <article id='public class-methods'>
+                      <h2>Public Class methods</h2>
+                      <a name='method-c-new'></a>
+                      <section class='method public-class' id='method-method-c-new'>
+                        <h3 class='synopsis'>
+                          <span class='name'>new</span>
+                          <span class='arguments'>(bib, root_dir, hash=nil)</span>
+                        </h3>
+                        <div class='description'>
+                          
+                          <p>Creates an Erb binding that can be used to process a template. Params:</p>
+                          <dl class="rdoc-list note-list"><dt>bib
+                          <dd>
+                          <p>Bibliography object to run the template on</p>
+                          </dd><dt>root_dir
+                          <dd>
+                          <p>Name of the directory to run the template in. This is used</p>
+                          </dd></dl>
+                          
+                          <p>as the “current directory” if sub-templates are called using <a
+                          href="ErbBinding.html#method-i-embed">embed</a></p>
+                          <dl class="rdoc-list note-list"><dt>hash
+                          <dd>
+                          <p>Contains any keyword arguments that should be passed to the template</p>
+                          </dd></dl>
+                        </div>
+                        <div class='source'>
+                          <a class='btn btn-mini source-toggle collapsed' data-toggle='collapse' href='#method-c-new-source'>
+                            <span class='show'>
+                              <span class='icon-resize-full'></span>
+                              Show
+                            </span>
+                            <span class='hide'>
+                              <span class='icon-resize-small'></span>
+                              Hide
+                            </span>
+                            Source
+                          </a>
+                          <div class='collapse' id='method-c-new-source'>
+                            <div class="CodeRay">
+                              <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(bib, root_dir, hash=<span style="color:#069">nil</span>)
+                              <span style="color:#080;font-weight:bold">super</span>(hash)
+                              <span style="color:#33B">@bib</span> = bib
+                              <span style="color:#33B">@root_dir</span> = root_dir
+                            <span style="color:#080;font-weight:bold">end</span></pre></div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </article>
+                    <article id='public instance-methods'>
+                      <h2>Public Instance methods</h2>
+                      <a name='method-i-embed'></a>
+                      <section class='method public-instance' id='method-method-i-embed'>
+                        <h3 class='synopsis'>
+                          <span class='name'>embed</span>
+                          <span class='arguments'>(fname, hash=nil)</span>
+                        </h3>
+                        <div class='description'>
+                          
+                          <p>Processes a file as a bibout template, and returns the result.</p>
+                          
+                          <p>The file is assumed to reside in the directory #@root_dir Keyword options
+                          can be passed to the template. The sub-template will be passed in the same
+                          bibliography as this template.</p>
+                          
+                          <p>Params:</p>
+                          <dl class="rdoc-list note-list"><dt>fname
+                          <dd>
+                          <p>Name of file containing template to process</p>
+                          </dd><dt>hash
+                          <dd>
+                          <p>Contains any keyword arguments that should be passed to the template</p>
+                          </dd></dl>
+                        </div>
+                        <div class='source'>
+                          <a class='btn btn-mini source-toggle collapsed' data-toggle='collapse' href='#method-i-embed-source'>
+                            <span class='show'>
+                              <span class='icon-resize-full'></span>
+                              Show
+                            </span>
+                            <span class='hide'>
+                              <span class='icon-resize-small'></span>
+                              Hide
+                            </span>
+                            Source
+                          </a>
+                          <div class='collapse' id='method-i-embed-source'>
+                            <div class="CodeRay">
+                              <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">embed</span>(fname, hash=<span style="color:#069">nil</span>)
+                              <span style="color:#080;font-weight:bold">if</span> <span style="color:#080;font-weight:bold">not</span> <span style="color:#33B">@root_dir</span>.nil?
+                                fname = <span style="color:#036;font-weight:bold">File</span>.join(<span style="color:#33B">@root_dir</span>, fname)
+                              <span style="color:#080;font-weight:bold">end</span>
+                              <span style="color:#036;font-weight:bold">File</span>.open(fname) <span style="color:#080;font-weight:bold">do</span> |f|
+                                tmpl = f.read()
+                                process_string(tmpl, fname, hash)
+                              <span style="color:#080;font-weight:bold">end</span>
+                            <span style="color:#080;font-weight:bold">end</span></pre></div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <a name='method-i-get_binding'></a>
+                      <section class='method public-instance' id='method-method-i-get_binding'>
+                        <h3 class='synopsis'>
+                          <span class='name'>get_binding</span>
+                          <span class='arguments'>()</span>
+                        </h3>
+                        <div class='description'>
+                          
+                          <p>Should not be called by external users</p>
+                        </div>
+                        <div class='source'>
+                          <a class='btn btn-mini source-toggle collapsed' data-toggle='collapse' href='#method-i-get_binding-source'>
+                            <span class='show'>
+                              <span class='icon-resize-full'></span>
+                              Show
+                            </span>
+                            <span class='hide'>
+                              <span class='icon-resize-small'></span>
+                              Hide
+                            </span>
+                            Source
+                          </a>
+                          <div class='collapse' id='method-i-get_binding-source'>
+                            <div class="CodeRay">
+                              <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">get_binding</span>
+                              <span style="color:#080;font-weight:bold">return</span> binding()
+                            <span style="color:#080;font-weight:bold">end</span></pre></div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <a name='method-i-process_string'></a>
+                      <section class='method public-instance' id='method-method-i-process_string'>
+                        <h3 class='synopsis'>
+                          <span class='name'>process_string</span>
+                          <span class='arguments'>(tmpl, fname='(bibout)', hash=nil)</span>
+                        </h3>
+                        <div class='description'>
+                          
+                          <p>Processes a given string as a bibout template Params:</p>
+                          <dl class="rdoc-list note-list"><dt>tmpl
+                          <dd>
+                          <p>String containing text of template to process</p>
+                          </dd><dt>fname
+                          <dd>
+                          <p>Name that should be used to identify template in error messages</p>
+                          </dd><dt>hash
+                          <dd>
+                          <p>Contains any keyword arguments that should be passed to the template</p>
+                          </dd></dl>
+                        </div>
+                        <div class='source'>
+                          <a class='btn btn-mini source-toggle collapsed' data-toggle='collapse' href='#method-i-process_string-source'>
+                            <span class='show'>
+                              <span class='icon-resize-full'></span>
+                              Show
+                            </span>
+                            <span class='hide'>
+                              <span class='icon-resize-small'></span>
+                              Hide
+                            </span>
+                            Source
+                          </a>
+                          <div class='collapse' id='method-i-process_string-source'>
+                            <div class="CodeRay">
+                              <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">process_string</span>(tmpl, fname=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">(bibout)</span><span style="color:#710">'</span></span>, hash=<span style="color:#069">nil</span>)
+                              bind = <span style="color:#036;font-weight:bold">ErbBinding</span>.new(<span style="color:#33B">@bib</span>, <span style="color:#33B">@root_dir</span>, hash).get_binding()
+                              erb = <span style="color:#036;font-weight:bold">ERB</span>.new(tmpl)
+                              erb.filename = fname
+                              erb.result(bind)
+                            <span style="color:#080;font-weight:bold">end</span></pre></div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class='span3'>
+            <ul class='nav nav-list'>
+              <li class='nav-header'>Defined IN</li>
+              <li>
+                <a href="../files/lib/bibout/erb_binding_rb.html">lib/bibout/erb_binding.rb</a>
+              </li>
+              <li class='nav-header'>Parent</li>
+              <li>
+                <strong>
+                  <a href="../files/lib/bibout/erb_binding_rb.html">erb_binding.rb</a>
+                </strong>
+              </li>
+              <li class='divider'></li>
+              <li class='nav-header'>Public Class</li>
+              <li><a href="#method-c-new">new</a></li>
+              <li class='nav-header'>Public Instance</li>
+              <li><a href="#attribute-i-bib">bib</a></li>
+              <li><a href="#method-i-embed">embed</a></li>
+              <li><a href="#method-i-get_binding">get_binding</a></li>
+              <li><a href="#method-i-process_string">process_string</a></li>
+              <li><a href="#attribute-i-root_dir">root_dir</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class='container'>
+        <p>
+          Generated by
+          <a href="https://github.com/rdoc/rdoc">RDoc 4.0.0</a>
+          .
+        </p>
+        <p>
+          Generated with the
+          <a href="http://github.com/ngs/hanna-bootstrap">Hanna Bootstrap RDoc Generator 0.0.5</a>
+          .
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

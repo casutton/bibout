@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>README.rdoc - RDoc Documentation</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
+    <link href='css/bootstrap.min.css' media='screen' rel='stylesheet' type='text/css'>
+    <link href='css/application.css' media='screen' rel='stylesheet' type='text/css'>
+    <link href='css/coderay.css' media='screen' rel='stylesheet' type='text/css'>
+    <script src='js/jquery.js' type='text/javascript'></script>
+    <script src='js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='js/index.js' type='text/javascript'></script>
+    <script src='js/application.js' type='text/javascript'></script>
+  </head>
+  <body class='file'>
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </a>
+          <a href="." class="brand">RDoc Documentation</a>
+          <div class='nav-collapse'>
+            <ul class='nav'>
+              <li class='dropdown'>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                  Classes
+                  <b class='caret'></b>
+                </a>
+                <ul class='dropdown-menu' role='menu'>
+                  <li><a href="classes/BibOut.html">BibOut</a></li><li><a href="classes/BibTeX.html">BibTeX</a></li><li><a href="classes/BibTeX/Bibliography.html"><span class="parent">BibTeX::</span>Bibliography</a></li><li><a href="classes/BibTeX/Entry.html"><span class="parent">BibTeX::</span>Entry</a></li><li><a href="classes/BibTeX/Names.html"><span class="parent">BibTeX::</span>Names</a></li><li><a href="classes/ErbBinding.html">ErbBinding</a></li>
+                </ul>
+              </li>
+              <li class='dropdown'>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                  Files
+                  <b class='caret'></b>
+                </a>
+                <ul class='dropdown-menu' role='menu'>
+                  <li><a href="files/README_rdoc.html">README.rdoc</a></li>
+                  <li><a href="files/lib/bibout_rb.html">bibout.rb</a></li>
+                  <li><a href="files/lib/bibout/bibtex_rb.html">bibtex.rb</a></li>
+                  <li><a href="files/lib/bibout/erb_binding_rb.html">erb_binding.rb</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class='navbar-search pull-right'>
+              <input class='search-query span2' id='search-query' placeholder='Search methods' type='text'>
+              <ul aria-labelledby='search-query' class='dropdown-menu' id='search-results' role='menu'></ul>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='main'>
+      <div class='container' id='documentation'>
+        <div class='row'>
+          <div class='span9'>
+            <div class='name'>README.rdoc</div>
+            <section id='content'>
+              <div id='text'>
+                <div id='description'>
+                  
+                  <h1 id="label-BibOut+"><a href="../classes/BibOut.html">BibOut</a> <span><a href="#label-BibOut+">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+                  
+                  <p>This package contains <a href="../classes/BibOut.html">BibOut</a>, a simple
+                  tool to convert <a href="../classes/BibTeX.html">BibTeX</a> files into HTML
+                  or other types of formatted text files.</p>
+                  
+                  <p>The main feautre of <a href="../classes/BibOut.html">BibOut</a> is that it
+                  allows the user to specify a template for the output. The templating system
+                  is based on <a
+                  href="http://ruby-doc.org/stdlib-2.1.0/libdoc/erb/rdoc/ERB.html">ERB</a>,
+                  so it is very flexible.</p>
+                  
+                  <h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <h3 id="label-Gem+Installation">Gem Installation<span><a href="#label-Gem+Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+                  
+                  <p>Download and install <a href="../classes/BibOut.html">BibOut</a> with the
+                  following.</p>
+                  
+                  <pre>gem install bibout</pre>
+                  
+                  <h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <h3 id="label-Simple+Example">Simple Example<span><a href="#label-Simple+Example">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+                  
+                  <p>You will need a <a href="../classes/BibTeX.html">BibTeX</a> file. Suppose
+                  that your file is called <code>mine.bib</code> and contains the entries</p>
+                  
+                  <pre>@article{robbins-monro,&#x000A;Author = {Robbins, H. and Monro, S.},&#x000A;Journal = {Annals of Mathematical Statistics},&#x000A;Pages = {400--407},&#x000A;Title = {A stochastic approximation method},&#x000A;Volume = {22},&#x000A;Year = {1951}}&#x000A;@article{metropolis,&#x000A;Author = {Metropolis, N. and Rosenbluth, A. and Rosenbluth, M. and Teller, A. and Teller, E.},&#x000A;Journal = {J. Chem. Phys.},&#x000A;Pages = {1087--1092},&#x000A;Title = {Equations of state calculations by fast computing machines},&#x000A;Volume = {21},&#x000A;Year = {1953}}</pre>
+                  
+                  <p>Then you will need to create a template file that tells <a
+                  href="../classes/BibOut.html">BibOut</a> how to format your entries. Call
+                  this file <code>template.tmpl</code></p>
+                  
+                  <pre>&lt;html&gt;&#x000A;  &lt;body&gt;&#x000A;    &lt;ol&gt;&#x000A;      &lt;% bib.each do |entry| %&gt;&#x000A;      &lt;li&gt;&lt;%= entry.year %&gt;. &lt;%= entry.author.pretty %&gt;&lt;/li&gt;&#x000A;      &lt;% end %&gt;&#x000A;    &lt;/ol&gt;&#x000A;   &lt;/body&gt;&#x000A; &lt;/html&gt;</pre>
+                  
+                  <p>Finally, you can run bibout using</p>
+                  
+                  <pre>% ls&#x000A;template.tmpl  mine.bib&#x000A;% bibout -t template.tmpl -o my-bib.html mine.bib</pre>
+                  
+                  <p>After running this command, the file <code>my-bib.html</code> will be
+                  created and will contain:</p>
+                  
+                  <pre>&lt;html&gt;&#x000A;  &lt;body&gt;&#x000A;    &lt;ol&gt;&#x000A;      &lt;li&gt;1951. H. Robbins and S. Monro&lt;/li&gt;&#x000A;&#x000A;      &lt;li&gt;1953. N. Metropolis, A. Rosenbluth, M. Rosenbluth, A. Teller and E. Teller&lt;/li&gt;&#x000A;&#x000A;    &lt;/ol&gt;&#x000A;   &lt;/body&gt;&#x000A;&lt;/html&gt;</pre>
+                  
+                  <p>Type + bibout –help + for more information about the command-line
+                  invocation.</p>
+                  
+                  <h2 id="label-Create+Template+Files">Create Template Files<span><a href="#label-Create+Template+Files">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <p>To use <a href="../classes/BibOut.html">BibOut</a>, the biggest thing that
+                  you need to do is to create the template file. The template file can
+                  contain arbitrary text and Ruby code. For more documentation about
+                  templates, including examples, see this <a
+                  href="http://templates.html">page about templates</a></p>
+                  
+                  <h2 id="label-Development">Development<span><a href="#label-Development">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <h3 id="label-Source+Repository">Source Repository<span><a href="#label-Source+Repository">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+                  
+                  <p><a href="../classes/BibOut.html">BibOut</a> is currently hosted at github.
+                  The github web page is <a
+                  href="http://github.com/casutton/bibout">github.com/casutton/bibout</a> .
+                  The public git clone URL is</p>
+                  <ul><li>
+                  <p>git://github.com/casutton/bibout.git</p>
+                  </li></ul>
+                  
+                  <h3 id="label-Issues+and+Bug+Reports">Issues and Bug Reports<span><a href="#label-Issues+and+Bug+Reports">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+                  
+                  <p>Feature requests and bug reports can be made here</p>
+                  <ul><li>
+                  <p><a
+                  href="https://github.com/casutton/bibout/issues">github.com/casutton/bibout/issues</a></p>
+                  </li></ul>
+                  
+                  <h2 id="label-Other+BibTeX+to+HTML+programs">Other <a href="../classes/BibTeX.html">BibTeX</a> to HTML programs<span><a href="#label-Other+BibTeX+to+HTML+programs">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <p>There are many other <a href="../classes/BibTeX.html">BibTeX</a> to HTML
+                  programs</p>
+                  <ul><li>
+                  <p><a
+                  href="https://www.lri.fr/~filliatr/bibtex2html">www.lri.fr/~filliatr/bibtex2html</a>/
+                  – bibtex2html, a nice and well-documented tool</p>
+                  </li><li>
+                  <p><a
+                  href="http://tug.ctan.org/tex-archive/biblio/bibtex/utils/bib2ml">tug.ctan.org/tex-archive/biblio/bibtex/utils/bib2ml</a>/
+                  – bib2ml (CTAN)</p>
+                  </li><li>
+                  <p><a
+                  href="http://www.spinellis.gr/sw/textproc/bib2xhtml">www.spinellis.gr/sw/textproc/bib2xhtml</a>/
+                  – bib2xml</p>
+                  </li><li>
+                  <p><a
+                  href="http://sourceforge.net/p/bibutils/home/Bibutils">sourceforge.net/p/bibutils/home/Bibutils</a>/
+                  – bib2xml component of bibutils</p>
+                  </li></ul>
+                  
+                  <p>If you know of others, please let me know and I shall be happy to add them
+                  to this list.</p>
+                  
+                  <h2 id="label-Credits">Credits<span><a href="#label-Credits">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <p>This project is basically a thin wrapper that combines <a
+                  href="https://github.com/inukshuk/bibtex-ruby/">bibtex-ruby</a> by
+                  Sylvester Keil with <a
+                  href="http://ruby-doc.org/stdlib-2.0.0/libdoc/erb/rdoc/ERB.html">ERB</a> by
+                  Masatoshi SEKI.</p>
+                  
+                  <p>Thanks also to <a href="http://ngs.io">Atsushi Nagase</a> for the <a
+                  href="http://ngs.github.io/hanna-bootstrap/">hanna-bootstrap</a> RDoc
+                  template.</p>
+                  
+                  <h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <p><a href="../classes/BibOut.html">BibOut</a> is available under an MIT-style
+                  license.</p>
+                  
+                  <p>The MIT License (MIT)</p>
+                  
+                  <p>Copyright © 2013 Charles Sutton</p>
+                  
+                  <p>Permission is hereby granted, free of charge, to any person obtaining a
+                  copy of this software and associated documentation files (the “Software”),
+                  to deal in the Software without restriction, including without limitation
+                  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+                  and/or sell copies of the Software, and to permit persons to whom the
+                  Software is furnished to do so, subject to the following conditions:</p>
+                  
+                  <p>The above copyright notice and this permission notice shall be included in
+                  all copies or substantial portions of the Software.</p>
+                  
+                  <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+                  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+                  DEALINGS IN THE SOFTWARE.</p>
+                  <hr style="height: 1px">
+                  
+                  <h1 id="label-Other+stuff">Other stuff<span><a href="#label-Other+stuff">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+                  <dl class="rdoc-list note-list"><dt>Author
+                  <dd>
+                  <p>Charles Sutton &lt;csutton@inf.ed.ac.uk&gt;</p>
+                  </dd><dt>Requires
+                  <dd>
+                  <p>Ruby 1.8.7 or later</p>
+                  </dd><dt>License
+                  <dd>
+                  <p>Copyright 2013-2014 by Charles Sutton Released under an MIT-style license. 
+                  See the LICENSE file included in the distribution.</p>
+                  </dd></dl>
+                  
+                  <h2 id="label-Warranty">Warranty<span><a href="#label-Warranty">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+                  
+                  <p>This software is provided “as is” and without any express or implied
+                  warranties, including, without limitation, the implied warranties of
+                  merchantibility and fitness for a particular purpose.</p>
+                </div>
+                <div id='context'>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class='span3'>
+            <ul class='nav nav-list'>
+              <li class='nav-header'>Path</li>
+              <li>README.rdoc</li>
+              <li class='nav-header'>Last Update</li>
+              <li>
+                <span class='datetime'>2013-12-29 00:06:46 +0000</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class='container'>
+        <p>
+          Generated by
+          <a href="https://github.com/rdoc/rdoc">RDoc 4.0.0</a>
+          .
+        </p>
+        <p>
+          Generated with the
+          <a href="http://github.com/ngs/hanna-bootstrap">Hanna Bootstrap RDoc Generator 0.0.5</a>
+          .
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
