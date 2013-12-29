@@ -1,3 +1,0 @@
-<% bib.each do |entry| %>
-<%= entry.key %>
-<%end%>

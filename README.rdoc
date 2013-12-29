@@ -79,8 +79,8 @@ Type + bibout --help + for more information about the command-line invocation.
 
 To use BibOut, the biggest thing that you need to do is to create the template file.
 The template file can contain arbitrary text and Ruby code.
-For more documentation about templates, including examples,
-see this {page about templates}[templates.html]
+For more information and examples,
+see the {documentation about templates}[http://casutton.github.io/bibout/templates.html]
 
 == Development
 
